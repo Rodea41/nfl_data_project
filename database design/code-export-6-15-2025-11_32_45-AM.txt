@@ -1,0 +1,68 @@
+conference [icon: group, color: purple] {
+  id string pk
+  name string
+}
+
+division [icon: folder, color: green] {
+  id string pk
+  name string
+  conference_id string fk
+}
+division.conference_id>conference.id
+
+team [icon: shield, color: orange] {
+  id string pk
+  name string
+  location string
+  division_id string fk
+}
+team.division_id>division.id
+
+player [icon: user, color: blue] {
+  id string pk
+  name string
+  birth_date date
+  position string
+  jersey_number number
+  draft_year number
+  status string
+  team_id string fk
+}
+player.team_id>team.id
+
+season [icon: calendar, color: yellow] {
+  id string pk
+  year number
+  type string
+}
+
+game [icon: ball, color: red] {
+  id string pk
+  season_id string fk
+  home_team_id string fk
+  away_team_id string fk
+  date date
+  type string
+}
+game.season_id>season.id
+game.home_team_id>team.id
+game.away_team_id>team.id
+
+player_stat [icon: chart, color: teal] {
+  player_id string fk
+  game_id string fk
+  stat_type string
+  value number
+}
+
+player_stat.player_id>player.id
+player_stat.game_id>game.id
+
+team_stat [icon: chart, color: teal] {
+  team_id string fk
+  game_id string fk
+  stat_type string
+  value number
+}
+team_stat.team_id>team.id
+team_stat.game_id>game.id
