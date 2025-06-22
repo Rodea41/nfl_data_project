@@ -12,4 +12,5 @@ dependencies = [
     "nfl-data-py>=0.3.3",
     "numpy==1.*",
     "pandas==1.*",
+    "seaborn>=0.13.2",
 ]
